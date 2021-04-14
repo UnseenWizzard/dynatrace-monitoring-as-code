@@ -185,7 +185,7 @@ func validateConfig(project project.Project, config config.Config, dict map[stri
 		return entity, err
 	}
 
-	randomId := "random-" + strconv.Itoa(rand.Int())
+	randomId := "random-" + strconv.Itoa(rand.Int()) // nolint (gosec) - this use of rand does not need to be cryptographically sound
 
 	// If configuration deployment skipped but has dependency, throw an error
 	if config.IsSkipDeployment(environment) {
