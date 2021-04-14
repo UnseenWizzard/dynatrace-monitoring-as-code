@@ -251,11 +251,8 @@ func (c *configImpl) replaceDependencies(data map[string]map[string]string, dict
 
 func (c *configImpl) parseDependency(dependency string, dict map[string]api.DynatraceEntity) (string, error) {
 
-	// in case of an absolute path within the dependency:
-	if strings.HasPrefix(dependency, string(os.PathSeparator)) {
-		// remove prefix "/"
-		dependency = dependency[1:]
-	}
+	// make config-repo-absolute paths relative by trimming path seperator prefix if present
+	dependency = strings.TrimPrefix(dependency, string(os.PathSeparator))
 
 	id, access, err := splitDependency(dependency)
 	if err != nil {
@@ -340,10 +337,8 @@ func (c *configImpl) HasDependencyOn(config Config) bool {
 			if valueIndex != -1 && isDependency(value[valueIndex:]) {
 				valueString := value[:valueIndex]
 
-				if strings.HasPrefix(valueString, string(os.PathSeparator)) {
-					// remove prefix "/"
-					valueString = valueString[1:]
-				}
+				// make config-repo-absolute paths relative by trimming path seperator prefix if present
+				valueString = strings.TrimPrefix(valueString, string(os.PathSeparator))
 
 				// if dependency is relative path:
 				// projects, config type and location should match
