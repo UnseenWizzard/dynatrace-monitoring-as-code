@@ -203,7 +203,7 @@ func getExistingValuesFromEndpoint(client *http.Client, theApi api.Api, url stri
 
 	for {
 
-		err, values, objmap := unmarshalJson(theApi, err, resp)
+		err, values, objmap := unmarshalJson(theApi, resp)
 		if err != nil {
 			return values, err
 		}
@@ -224,10 +224,7 @@ func getExistingValuesFromEndpoint(client *http.Client, theApi api.Api, url stri
 	return existingValues, nil
 }
 
-func unmarshalJson(theApi api.Api, err error, resp Response) (error, []api.Value, map[string]interface{}) {
-
-	var values []api.Value
-	var objmap map[string]interface{}
+func unmarshalJson(theApi api.Api, resp Response) (err error, values []api.Value, objmap map[string]interface{}) {
 
 	// This API returns an untyped list as a response -> it needs a special handling
 	if theApi.GetId() == "aws-credentials" {
