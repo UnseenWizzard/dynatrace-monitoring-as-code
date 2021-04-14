@@ -24,4 +24,4 @@ jobs:
           args:  -E gosec -E bodyclose -E cyclop -E exhaustive -E godox
 
           # PR config -> only flag issues in changeset
-          only-new-issues: true
+          only-new-issues: false
