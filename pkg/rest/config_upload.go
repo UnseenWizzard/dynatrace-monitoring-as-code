@@ -304,7 +304,7 @@ func isPaginatedResponse(jsonResponse map[string]interface{}) (paginated bool, p
 func translateGenericValues(inputValues []interface{}, configType string) ([]api.Value, error) {
 
 	numValues := len(inputValues)
-	values := make([]api.Value, numValues, numValues)
+	values := make([]api.Value, numValues)
 
 	for i := 0; i < numValues; i++ {
 		input := inputValues[i].(map[string]interface{})
@@ -340,7 +340,7 @@ func translateGenericValues(inputValues []interface{}, configType string) ([]api
 
 func translateSyntheticValues(syntheticValues []api.SyntheticValue) []api.Value {
 	numValues := len(syntheticValues)
-	values := make([]api.Value, numValues, numValues)
+	values := make([]api.Value, numValues)
 	for i := 0; i < numValues; i++ {
 		loc := syntheticValues[i]
 		values[i] = api.Value{
