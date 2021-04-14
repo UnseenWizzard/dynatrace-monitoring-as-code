@@ -59,7 +59,7 @@ func Deploy(workingDir string, fs afero.Fs, environmentsFile string,
 
 	for _, environment := range environments {
 		errors := execute(environment, projects, dryRun, workingDir, continueOnError)
-		if errors != nil && len(errors) > 0 {
+		if len(errors) > 0 {
 			deploymentErrors[environment.GetId()] = errors
 		}
 	}
