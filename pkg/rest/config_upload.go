@@ -167,7 +167,10 @@ func deleteDynatraceObject(client *http.Client, api api.Api, name string, url st
 	}
 
 	if len(existingId) > 0 {
-		deleteConfig(client, url, token, existingId)
+		err = deleteConfig(client, url, token, existingId)
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }

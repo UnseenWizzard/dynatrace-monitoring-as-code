@@ -93,9 +93,9 @@ func Deploy(workingDir string, fs afero.Fs, environmentsFile string,
 		util.Log.Info("Deployment finished without errors")
 	}
 
-	deleteConfigs(apis, environments, workingDir, dryRun, fs)
+	err = deleteConfigs(apis, environments, workingDir, dryRun, fs)
 
-	return nil
+	return err
 }
 
 func execute(environment environment.Environment, projects []project.Project, dryRun bool, path string, continueOnError bool) (errors []error) {
