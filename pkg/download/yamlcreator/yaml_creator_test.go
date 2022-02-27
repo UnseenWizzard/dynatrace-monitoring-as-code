@@ -34,6 +34,7 @@ func TestAddConfig(t *testing.T) {
 	config := NewYamlConfig()
 	config.AddConfig("test", "test 1234")
 	assert.Check(t, len(config.Detail["test"]) == 1)
+	assert.Check(t, false) //provoke fail
 	assert.Check(t, config.Detail["test"][0].Name == "test 1234")
 }
 
