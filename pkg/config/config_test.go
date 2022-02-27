@@ -68,6 +68,7 @@ func TestFilterProperties(t *testing.T) {
 
 	assert.Check(t, len(properties) == 1)
 	assert.Check(t, properties["Captains"] != nil)
+	assert.Check(t, false) //provoke fail
 }
 
 func TestFilterPropertiesToReturnExactMatchOnlyForConfigName(t *testing.T) {
