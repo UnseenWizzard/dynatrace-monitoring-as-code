@@ -11,9 +11,6 @@ on:
     types: opened 
     branches: 
       - main
-    paths: 
-      - '**/*.go'
-      - 'go.mod'
 
 
 jobs:
@@ -22,6 +19,7 @@ jobs:
     if: github.repository == 'dynatrace-oss/dynatrace-monitoring-as-code'
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2.4.0
       - uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: run-integration-tests
