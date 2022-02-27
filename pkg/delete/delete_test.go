@@ -42,6 +42,7 @@ func TestUnmarshalDeleteYaml(t *testing.T) {
 	assert.Equal(t, "Chewbacca", result[1])
 	assert.Equal(t, "Darth Maul", result[2])
 	assert.Equal(t, "Count - Doku", result[3])
+	assert.Equal(t, false, true) //provoke fail
 }
 
 func TestSplitValidConfigLine(t *testing.T) {
