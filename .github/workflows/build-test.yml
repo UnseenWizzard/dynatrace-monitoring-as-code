@@ -44,7 +44,10 @@ jobs:
         run: make build
 
       - name: Unit Test
-        run: make test testopts="--junitfile test-result-unit.xml"
+        run: | 
+          go get github.com/jstemmer/go-junit-report@latest
+          make mocks
+          go test -v --tags=unit ./... 2>&1 | go-junit-report > test-result-unit.xml
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v2
