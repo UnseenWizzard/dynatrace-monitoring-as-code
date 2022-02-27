@@ -11,7 +11,7 @@ Configuration files are ordered by `project` in the projects folder. Project fol
 
 This means it is possible to group projects into folders, but combining projects and configurations in the same folder is not supported.
 
-There are no restriction for the depth of a projects tree.
+There [change] are no restriction for the depth of a projects tree.
 
 To get an idea of the possible combinations take a look at `cmd/monaco/test-resources/integration-multi-project`.
 
